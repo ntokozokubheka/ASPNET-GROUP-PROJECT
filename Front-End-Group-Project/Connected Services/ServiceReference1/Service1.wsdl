@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/PO5_SERVICE" />
+      <xs:element name="IsRegUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_surname" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_dob" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IsRegUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="IsRegUserResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Login">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="LoginResult" nillable="true" type="q1:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetUserResult" nillable="true" type="q2:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="dob" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditUserResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProduct">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetProductResult" nillable="true" type="q3:Product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditProduct">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int" />
+            <xs:element minOccurs="0" name="_name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="price" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_description" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_Quantity" type="xs:int" />
+            <xs:element minOccurs="0" name="_publishedDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_authorName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_img" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditProductResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductList">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProductListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetProductListResult" nillable="true" type="q4:ArrayOfProduct" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCARTList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="U_ID" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCARTListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetCARTListResult" nillable="true" type="q5:ArrayOfSHOPPING_CART" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditCart">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserID" type="xs:int" />
+            <xs:element minOccurs="0" name="_ProductID" type="xs:int" />
+            <xs:element minOccurs="0" name="_Quantinty" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditCartResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditCartResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddToCart">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserID" type="xs:int" />
+            <xs:element minOccurs="0" name="_ProductID" type="xs:int" />
+            <xs:element minOccurs="0" name="_Quantinty" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddToCartResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AddToCartResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveItemCart">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_User" type="xs:int" />
+            <xs:element minOccurs="0" name="_Product" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveItemCartResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RemoveItemCartResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Checkout">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_ProductID" type="xs:int" />
+            <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckoutResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckoutResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NumberItemsIncart">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NumberItemsIncartResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="NumberItemsIncartResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckCart">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserID" type="xs:int" />
+            <xs:element minOccurs="0" name="_ProductID" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckCartResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckCartResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveBook">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_ProductID" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RemoveBookResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddBook">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="price" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_description" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_Quantity" type="xs:int" />
+            <xs:element minOccurs="0" name="_publishedDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_authorName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_img" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_category" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="language" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AddBookResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateInvoice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserId" type="xs:int" />
+            <xs:element minOccurs="0" name="_OrderId" type="xs:int" />
+            <xs:element minOccurs="0" name="_PointsUsed" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_TotalCost" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_InvoiceDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_DueDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_Address" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_Address2" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_Address3" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_ShippingCost" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_status" type="xs:int" />
+            <xs:element minOccurs="0" name="_VAT" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="discount" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateInvoiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CreateInvoiceResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPendingOrdersOrInvoice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserID" type="xs:int" />
+            <xs:element minOccurs="0" name="_Quertype" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPendingOrdersOrInvoiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetPendingOrdersOrInvoiceResult" nillable="true" type="q6:ArrayOfInvoice" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserList">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetUserListResult" nillable="true" type="q7:ArrayOfUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserID" type="xs:int" />
+            <xs:element minOccurs="0" name="_ProductCost" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_OrderID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="_quantity" type="xs:int" />
+            <xs:element minOccurs="0" name="_Prname" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="addOrderResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOderLIst">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_OrderID" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOderLIstResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetOderLIstResult" nillable="true" type="q8:ArrayOfPurchaseInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInv">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_UserId" type="xs:int" />
+            <xs:element minOccurs="0" name="_OrderID" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInvResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetInvResult" nillable="true" type="q9:Invoice" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditUserAdmin">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Id" type="xs:int" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lastname" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="usertype" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="dob" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="points" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="active" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditUserAdminResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditUserAdminResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditInvoice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditInvoiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditInvoiceResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Reports">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_type" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReportsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ReportsResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBookList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="_m" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBookListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PO5_SERVICE" minOccurs="0" name="GetBookListResult" nillable="true" type="q10:ArrayOfProduct" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PO5_SERVICE" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PO5_SERVICE" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="User">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="U_PointsValue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="U_active" type="xs:int" />
+          <xs:element minOccurs="0" name="U_dob" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="U_email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="U_name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="U_password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="U_surname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="U_type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="User" nillable="true" type="tns:User" />
+      <xs:complexType name="Product">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="P_AuthorName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_Img" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_Language" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_PublishedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="P_Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="P_category" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_description_" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_price" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="P_publisher" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Product" nillable="true" type="tns:Product" />
+      <xs:complexType name="ArrayOfProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:complexType name="ArrayOfSHOPPING_CART">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SHOPPING_CART" nillable="true" type="tns:SHOPPING_CART" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSHOPPING_CART" nillable="true" type="tns:ArrayOfSHOPPING_CART" />
+      <xs:complexType name="SHOPPING_CART">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Order_Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="Product_ID" type="xs:int" />
+          <xs:element minOccurs="0" name="User_ID" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SHOPPING_CART" nillable="true" type="tns:SHOPPING_CART" />
+      <xs:complexType name="ArrayOfInvoice">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Invoice" nillable="true" type="tns:Invoice" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfInvoice" nillable="true" type="tns:ArrayOfInvoice" />
+      <xs:complexType name="Invoice">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Adressline_1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Adressline_2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Adressline_3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountRecieved" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Order_ID" type="xs:int" />
+          <xs:element minOccurs="0" name="PointsUsed" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="Total" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="User_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="VAT" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Invoice" nillable="true" type="tns:Invoice" />
+      <xs:complexType name="ArrayOfUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+      <xs:complexType name="ArrayOfPurchaseInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseInfo" nillable="true" type="tns:PurchaseInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPurchaseInfo" nillable="true" type="tns:ArrayOfPurchaseInfo" />
+      <xs:complexType name="PurchaseInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Invoice_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Order_ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductCost" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="User_Id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PurchaseInfo" nillable="true" type="tns:PurchaseInfo" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_IsRegUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsRegUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsRegUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsRegUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProductList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProductList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCARTList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCARTList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCARTList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCARTListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddToCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddToCart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddToCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddToCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveItemCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItemCart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveItemCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItemCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Checkout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Checkout" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Checkout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_NumberItemsIncart_InputMessage">
+    <wsdl:part name="parameters" element="tns:NumberItemsIncart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_NumberItemsIncart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NumberItemsIncartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCart" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBook" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBook" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPendingOrdersOrInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingOrdersOrInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPendingOrdersOrInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingOrdersOrInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:addOrder" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOderLIst_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOderLIst" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOderLIst_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOderLIstResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetInv_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInv" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetInv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditUserAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditUserAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Reports_InputMessage">
+    <wsdl:part name="parameters" element="tns:Reports" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Reports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBookList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBookList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="IsRegUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsRegUser" message="tns:IService1_IsRegUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsRegUserResponse" message="tns:IService1_IsRegUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Login" message="tns:IService1_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginResponse" message="tns:IService1_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUser" message="tns:IService1_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserResponse" message="tns:IService1_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditUser" message="tns:IService1_EditUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditUserResponse" message="tns:IService1_EditUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProduct" message="tns:IService1_GetProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProductResponse" message="tns:IService1_GetProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditProduct" message="tns:IService1_EditProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditProductResponse" message="tns:IService1_EditProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProductList" message="tns:IService1_GetProductList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProductListResponse" message="tns:IService1_GetProductList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCARTList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCARTList" message="tns:IService1_GetCARTList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCARTListResponse" message="tns:IService1_GetCARTList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditCart" message="tns:IService1_EditCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditCartResponse" message="tns:IService1_EditCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddToCart" message="tns:IService1_AddToCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddToCartResponse" message="tns:IService1_AddToCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItemCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveItemCart" message="tns:IService1_RemoveItemCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveItemCartResponse" message="tns:IService1_RemoveItemCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Checkout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Checkout" message="tns:IService1_Checkout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckoutResponse" message="tns:IService1_Checkout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NumberItemsIncart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/NumberItemsIncart" message="tns:IService1_NumberItemsIncart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/NumberItemsIncartResponse" message="tns:IService1_NumberItemsIncart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckCart" message="tns:IService1_CheckCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckCartResponse" message="tns:IService1_CheckCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveBook" message="tns:IService1_RemoveBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveBookResponse" message="tns:IService1_RemoveBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddBook" message="tns:IService1_AddBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddBookResponse" message="tns:IService1_AddBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateInvoice" message="tns:IService1_CreateInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateInvoiceResponse" message="tns:IService1_CreateInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingOrdersOrInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPendingOrdersOrInvoice" message="tns:IService1_GetPendingOrdersOrInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPendingOrdersOrInvoiceResponse" message="tns:IService1_GetPendingOrdersOrInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserList" message="tns:IService1_GetUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserListResponse" message="tns:IService1_GetUserList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addOrder" message="tns:IService1_addOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addOrderResponse" message="tns:IService1_addOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOderLIst">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOderLIst" message="tns:IService1_GetOderLIst_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOderLIstResponse" message="tns:IService1_GetOderLIst_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInv">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetInv" message="tns:IService1_GetInv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetInvResponse" message="tns:IService1_GetInv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditUserAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditUserAdmin" message="tns:IService1_EditUserAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditUserAdminResponse" message="tns:IService1_EditUserAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditInvoice" message="tns:IService1_EditInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditInvoiceResponse" message="tns:IService1_EditInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Reports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Reports" message="tns:IService1_Reports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReportsResponse" message="tns:IService1_Reports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBookList" message="tns:IService1_GetBookList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBookListResponse" message="tns:IService1_GetBookList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsRegUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsRegUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IService1/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProduct">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditProduct">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProductList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCARTList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCARTList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditCart">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToCart">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddToCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItemCart">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveItemCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checkout">
+      <soap:operation soapAction="http://tempuri.org/IService1/Checkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NumberItemsIncart">
+      <soap:operation soapAction="http://tempuri.org/IService1/NumberItemsIncart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCart">
+      <soap:operation soapAction="http://tempuri.org/IService1/CheckCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBook">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBook">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateInvoice">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingOrdersOrInvoice">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPendingOrdersOrInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOrder">
+      <soap:operation soapAction="http://tempuri.org/IService1/addOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOderLIst">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOderLIst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInv">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetInv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditUserAdmin">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditUserAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditInvoice">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reports">
+      <soap:operation soapAction="http://tempuri.org/IService1/Reports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBookList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:55391/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
